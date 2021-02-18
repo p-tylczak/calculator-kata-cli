@@ -12,7 +12,7 @@ class CalculatorRegisterTest {
 
     @Test
     public void getAvailableCalculators_shouldReturnIntegerCalculatorWithKey1() {
-        Map<String, Calculator> availableCalculators = calculatorRegister.getAvailableCalculators();
+        Map<String, Calculator<?>> availableCalculators = calculatorRegister.getAvailableCalculators();
 
         assertTrue(availableCalculators.containsKey("1"));
         assertTrue(availableCalculators.get("1") instanceof IntegerCalculator);

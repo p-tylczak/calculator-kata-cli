@@ -12,11 +12,11 @@ public class CalculatorApp {
         String secondOperand;
         Calculator selectedCalculator;
 
-        Map<String, Calculator> calculatorMap = new CalculatorRegister().getAvailableCalculators();
+        Map<String, Calculator<?>> calculatorMap = new CalculatorRegister().getAvailableCalculators();
 
         System.out.println("Please select a calculator type and hit enter.");
 
-        for (Map.Entry<String, Calculator> calculator : calculatorMap.entrySet()) {
+        for (Map.Entry<String, Calculator<?>> calculator : calculatorMap.entrySet()) {
             System.out.println(String.format("[%s] %s", calculator.getKey(), calculator.getValue().calculatorType()));
         }
 
@@ -43,17 +43,16 @@ public class CalculatorApp {
             System.out.println();
 
             Object result = selectedCalculator.getOperatorFunction(input)
-                    .apply(selectedCalculator.parse(firstOperand),
-                            selectedCalculator.parse(secondOperand));
+                    .apply(selectedCalculator.parse(firstOperand), selectedCalculator.parse(secondOperand));
 
             System.out.println("Result: " + result);
 
-            System.out.println("\nContinue? [yes/no]");
+            System.out.println("\nContinue? [y/n]");
             input = in.nextLine();
-        } while (input.equals("yes"));
+        } while (input.equals("y"));
     }
 
-    private static String getAvailableOperands(Calculator calculator) {
+    private static String getAvailableOperands(Calculator<?> calculator) {
         return String.format("[%s]: addition\n[%s]: subtraction\n[%s]: multiplication\n[%s]: division",
                 calculator.addOperator(), calculator.subtractOperator(), calculator.multiplyOperator(), calculator.divideOperator());
     }
