@@ -32,5 +32,5 @@ jobs:
         if: ${{ github.event.inputs.notify }}
         run: echo "Notifying of ${{ github.event.inputs.versionType }} deployment"
 
-      - name: ref test
-        run: echo "Ref Name: ${{ github.ref_name }}"
+      - name: Ref test
+        run: echo "Ref Name:: ${{ github.ref_name }}"
