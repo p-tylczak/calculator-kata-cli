@@ -8,14 +8,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorRegisterTest {
 
-    private CalculatorRegister calculatorRegister = new CalculatorRegister();
+    private final CalculatorRegister calculatorRegister = new CalculatorRegister();
 
     @Test
-    public void getAvailableCalculators_shouldReturnIntegerCalculatorWithKey1() {
+    void getAvailableCalculators_shouldReturnIntegerCalculatorWithKey1() {
         Map<String, Calculator<?>> availableCalculators = calculatorRegister.getAvailableCalculators();
 
         assertTrue(availableCalculators.containsKey("1"));
-        assertTrue(availableCalculators.get("1") instanceof IntegerCalculator);
+        assertInstanceOf(IntegerCalculator.class, availableCalculators.get("1"));
     }
 
 }
